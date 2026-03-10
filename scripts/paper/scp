@@ -1,0 +1,8 @@
+// from spark to lrz via WSL (-3 to avoid intermediate copy to local)
+scp -3 sp:~/projects/experiments/BPM_DomainAdaptation/scripts/paper/BPI17_002_params.txt ai:~/bpm-llm/
+
+// from spark to Windows via WSL
+scp "sp:~/projects/experiments/BPM_DomainAdaptation/plots/pre-training/*" "/mnt/f/OneDrive/Werk/TUM/BPM-LLM/Images/"
+
+// convert to lrz slurm parameters script
+bash scripts/paper/sp2lrz.sh -f  scripts/paper/GPT2-small-mini-all_001.sh

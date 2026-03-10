@@ -1,0 +1,64 @@
+# BPI20PrepaidTravelCosts 
+ --project_name BPI20_003 --dataset BPI20PrepaidTravelCosts  --backbone qwen3-0.6b --lr 0.0005  --val_size .1 --val_split prefix --patience 10 --freeze_layers 1 -1 --categorical_features activity resource --continuous_features accumulated_time  --lifecycle --wandb  --append_run_info
+ --project_name BPI20_003 --dataset BPI20PrepaidTravelCosts  --backbone qwen3-1.7b --lr 0.0005  --val_size .1 --val_split prefix --patience 10 --freeze_layers 1 -1 --categorical_features activity resource --continuous_features accumulated_time  --lifecycle --wandb  --append_run_info
+ --project_name BPI20_003 --dataset BPI20PrepaidTravelCosts  --backbone qwen3-4b --lr 0.0005  --val_size .1 --val_split prefix --patience 10 --freeze_layers 1 -1 --categorical_features activity resource --continuous_features accumulated_time  --lifecycle --wandb  --append_run_info
+
+ --project_name BPI20_003 --dataset BPI20PrepaidTravelCosts  --backbone qwen3-0.6b --lr 0.0005  --val_size .1 --val_split prefix --patience 10 --freeze_layers 1 -1 --categorical_features activity resource --continuous_features accumulated_time  --lifecycle --wandb  --append_run_info
+ --project_name BPI20_003 --dataset BPI20PrepaidTravelCosts  --backbone qwen3-1.7b --lr 0.0005  --val_size .1 --val_split prefix --patience 10 --freeze_layers 1 -1 --categorical_features activity resource --continuous_features accumulated_time  --lifecycle --wandb  --append_run_info
+ --project_name BPI20_003 --dataset BPI20PrepaidTravelCosts  --backbone qwen3-4b --lr 0.0005  --val_size .1 --val_split prefix --patience 10 --freeze_layers 1 -1 --categorical_features activity resource --continuous_features accumulated_time  --lifecycle --wandb  --append_run_info
+
+ --project_name BPI20_003 --dataset BPI20PrepaidTravelCosts  --backbone qwen3-0.6b --lr 0.0005  --val_size .1 --val_split prefix --patience 10 --freeze_layers 1 -1 --categorical_features activity resource --continuous_features accumulated_time  --lifecycle --wandb  --append_run_info
+ --project_name BPI20_003 --dataset BPI20PrepaidTravelCosts  --backbone qwen3-1.7b --lr 0.0005  --val_size .1 --val_split prefix --patience 10 --freeze_layers 1 -1 --categorical_features activity resource --continuous_features accumulated_time  --lifecycle --wandb  --append_run_info
+ --project_name BPI20_003 --dataset BPI20PrepaidTravelCosts  --backbone qwen3-4b --lr 0.0005  --val_size .1 --val_split prefix --patience 10 --freeze_layers 1 -1 --categorical_features activity resource --continuous_features accumulated_time  --lifecycle --wandb  --append_run_info
+
+ --project_name BPI20_003 --dataset BPI20PrepaidTravelCosts  --backbone qwen3-0.6b --lr 0.0005  --val_size .1 --val_split prefix --patience 10 --freeze_layers 1 -1 --categorical_features activity resource --continuous_features accumulated_time  --lifecycle --wandb  --append_run_info
+ --project_name BPI20_003 --dataset BPI20PrepaidTravelCosts  --backbone qwen3-1.7b --lr 0.0005  --val_size .1 --val_split prefix --patience 10 --freeze_layers 1 -1 --categorical_features activity resource --continuous_features accumulated_time  --lifecycle --wandb  --append_run_info
+ --project_name BPI20_003 --dataset BPI20PrepaidTravelCosts  --backbone qwen3-4b --lr 0.0005  --val_size .1 --val_split prefix --patience 10 --freeze_layers 1 -1 --categorical_features activity resource --continuous_features accumulated_time  --lifecycle --wandb  --append_run_info
+
+ --project_name BPI20_003 --dataset BPI20PrepaidTravelCosts  --backbone qwen3-0.6b --lr 0.0005  --val_size .1 --val_split prefix --patience 10 --freeze_layers 1 -1 --categorical_features activity resource --continuous_features accumulated_time  --lifecycle --wandb  --append_run_info
+ --project_name BPI20_003 --dataset BPI20PrepaidTravelCosts  --backbone qwen3-1.7b --lr 0.0005  --val_size .1 --val_split prefix --patience 10 --freeze_layers 1 -1 --categorical_features activity resource --continuous_features accumulated_time  --lifecycle --wandb  --append_run_info
+ --project_name BPI20_003 --dataset BPI20PrepaidTravelCosts  --backbone qwen3-4b --lr 0.0005  --val_size .1 --val_split prefix --patience 10 --freeze_layers 1 -1 --categorical_features activity resource --continuous_features accumulated_time  --lifecycle --wandb  --append_run_info
+
+
+#BPI20TravelPermitData 
+ --project_name BPI20_003 --dataset BPI20TravelPermitData  --backbone qwen3-0.6b --lr 0.0005  --val_size .1 --val_split prefix --patience 10 --freeze_layers 1 -1 --categorical_features activity resource --continuous_features accumulated_time  --lifecycle --wandb  --append_run_info
+ --project_name BPI20_003 --dataset BPI20TravelPermitData  --backbone qwen3-1.7b --lr 0.0005  --val_size .1 --val_split prefix --patience 10 --freeze_layers 1 -1 --categorical_features activity resource --continuous_features accumulated_time  --lifecycle --wandb  --append_run_info
+ --project_name BPI20_003 --dataset BPI20TravelPermitData  --backbone qwen3-4b --lr 0.0005  --val_size .1 --val_split prefix --patience 10 --freeze_layers 1 -1 --categorical_features activity resource --continuous_features accumulated_time  --lifecycle --wandb  --append_run_info
+
+ --project_name BPI20_003 --dataset BPI20TravelPermitData  --backbone qwen3-0.6b --lr 0.0005  --val_size .1 --val_split prefix --patience 10 --freeze_layers 1 -1 --categorical_features activity resource --continuous_features accumulated_time  --lifecycle --wandb  --append_run_info
+ --project_name BPI20_003 --dataset BPI20TravelPermitData  --backbone qwen3-1.7b --lr 0.0005  --val_size .1 --val_split prefix --patience 10 --freeze_layers 1 -1 --categorical_features activity resource --continuous_features accumulated_time  --lifecycle --wandb  --append_run_info
+ --project_name BPI20_003 --dataset BPI20TravelPermitData  --backbone qwen3-4b --lr 0.0005  --val_size .1 --val_split prefix --patience 10 --freeze_layers 1 -1 --categorical_features activity resource --continuous_features accumulated_time  --lifecycle --wandb  --append_run_info
+
+ --project_name BPI20_003 --dataset BPI20TravelPermitData  --backbone qwen3-0.6b --lr 0.0005  --val_size .1 --val_split prefix --patience 10 --freeze_layers 1 -1 --categorical_features activity resource --continuous_features accumulated_time  --lifecycle --wandb  --append_run_info
+ --project_name BPI20_003 --dataset BPI20TravelPermitData  --backbone qwen3-1.7b --lr 0.0005  --val_size .1 --val_split prefix --patience 10 --freeze_layers 1 -1 --categorical_features activity resource --continuous_features accumulated_time  --lifecycle --wandb  --append_run_info
+ --project_name BPI20_003 --dataset BPI20TravelPermitData  --backbone qwen3-4b --lr 0.0005  --val_size .1 --val_split prefix --patience 10 --freeze_layers 1 -1 --categorical_features activity resource --continuous_features accumulated_time  --lifecycle --wandb  --append_run_info
+
+ --project_name BPI20_003 --dataset BPI20TravelPermitData  --backbone qwen3-0.6b --lr 0.0005  --val_size .1 --val_split prefix --patience 10 --freeze_layers 1 -1 --categorical_features activity resource --continuous_features accumulated_time  --lifecycle --wandb  --append_run_info
+ --project_name BPI20_003 --dataset BPI20TravelPermitData  --backbone qwen3-1.7b --lr 0.0005  --val_size .1 --val_split prefix --patience 10 --freeze_layers 1 -1 --categorical_features activity resource --continuous_features accumulated_time  --lifecycle --wandb  --append_run_info
+ --project_name BPI20_003 --dataset BPI20TravelPermitData  --backbone qwen3-4b --lr 0.0005  --val_size .1 --val_split prefix --patience 10 --freeze_layers 1 -1 --categorical_features activity resource --continuous_features accumulated_time  --lifecycle --wandb  --append_run_info
+
+ --project_name BPI20_003 --dataset BPI20TravelPermitData  --backbone qwen3-0.6b --lr 0.0005  --val_size .1 --val_split prefix --patience 10 --freeze_layers 1 -1 --categorical_features activity resource --continuous_features accumulated_time  --lifecycle --wandb  --append_run_info
+ --project_name BPI20_003 --dataset BPI20TravelPermitData  --backbone qwen3-1.7b --lr 0.0005  --val_size .1 --val_split prefix --patience 10 --freeze_layers 1 -1 --categorical_features activity resource --continuous_features accumulated_time  --lifecycle --wandb  --append_run_info
+ --project_name BPI20_003 --dataset BPI20TravelPermitData  --backbone qwen3-4b --lr 0.0005  --val_size .1 --val_split prefix --patience 10 --freeze_layers 1 -1 --categorical_features activity resource --continuous_features accumulated_time  --lifecycle --wandb  --append_run_info
+
+
+#BPI20RequestForPayment
+ --project_name BPI20_003 --dataset BPI20RequestForPayment --backbone qwen3-0.6b --lr 0.0005  --val_size .1 --val_split prefix --patience 10 --freeze_layers 1 -1 --categorical_features activity resource --continuous_features accumulated_time  --lifecycle --wandb  --append_run_info
+ --project_name BPI20_003 --dataset BPI20RequestForPayment --backbone qwen3-1.7b --lr 0.0005  --val_size .1 --val_split prefix --patience 10 --freeze_layers 1 -1 --categorical_features activity resource --continuous_features accumulated_time  --lifecycle --wandb  --append_run_info
+ --project_name BPI20_003 --dataset BPI20RequestForPayment --backbone qwen3-4b --lr 0.0005  --val_size .1 --val_split prefix --patience 10 --freeze_layers 1 -1 --categorical_features activity resource --continuous_features accumulated_time  --lifecycle --wandb  --append_run_info
+
+ --project_name BPI20_003 --dataset BPI20RequestForPayment --backbone qwen3-0.6b --lr 0.0005  --val_size .1 --val_split prefix --patience 10 --freeze_layers 1 -1 --categorical_features activity resource --continuous_features accumulated_time  --lifecycle --wandb  --append_run_info
+ --project_name BPI20_003 --dataset BPI20RequestForPayment --backbone qwen3-1.7b --lr 0.0005  --val_size .1 --val_split prefix --patience 10 --freeze_layers 1 -1 --categorical_features activity resource --continuous_features accumulated_time  --lifecycle --wandb  --append_run_info
+ --project_name BPI20_003 --dataset BPI20RequestForPayment --backbone qwen3-4b --lr 0.0005  --val_size .1 --val_split prefix --patience 10 --freeze_layers 1 -1 --categorical_features activity resource --continuous_features accumulated_time  --lifecycle --wandb  --append_run_info
+
+ --project_name BPI20_003 --dataset BPI20RequestForPayment --backbone qwen3-0.6b --lr 0.0005  --val_size .1 --val_split prefix --patience 10 --freeze_layers 1 -1 --categorical_features activity resource --continuous_features accumulated_time  --lifecycle --wandb  --append_run_info
+ --project_name BPI20_003 --dataset BPI20RequestForPayment --backbone qwen3-1.7b --lr 0.0005  --val_size .1 --val_split prefix --patience 10 --freeze_layers 1 -1 --categorical_features activity resource --continuous_features accumulated_time  --lifecycle --wandb  --append_run_info
+ --project_name BPI20_003 --dataset BPI20RequestForPayment --backbone qwen3-4b --lr 0.0005  --val_size .1 --val_split prefix --patience 10 --freeze_layers 1 -1 --categorical_features activity resource --continuous_features accumulated_time  --lifecycle --wandb  --append_run_info
+
+ --project_name BPI20_003 --dataset BPI20RequestForPayment --backbone qwen3-0.6b --lr 0.0005  --val_size .1 --val_split prefix --patience 10 --freeze_layers 1 -1 --categorical_features activity resource --continuous_features accumulated_time  --lifecycle --wandb  --append_run_info
+ --project_name BPI20_003 --dataset BPI20RequestForPayment --backbone qwen3-1.7b --lr 0.0005  --val_size .1 --val_split prefix --patience 10 --freeze_layers 1 -1 --categorical_features activity resource --continuous_features accumulated_time  --lifecycle --wandb  --append_run_info
+ --project_name BPI20_003 --dataset BPI20RequestForPayment --backbone qwen3-4b --lr 0.0005  --val_size .1 --val_split prefix --patience 10 --freeze_layers 1 -1 --categorical_features activity resource --continuous_features accumulated_time  --lifecycle --wandb  --append_run_info
+
+ --project_name BPI20_003 --dataset BPI20RequestForPayment --backbone qwen3-0.6b --lr 0.0005  --val_size .1 --val_split prefix --patience 10 --freeze_layers 1 -1 --categorical_features activity resource --continuous_features accumulated_time  --lifecycle --wandb  --append_run_info
+ --project_name BPI20_003 --dataset BPI20RequestForPayment --backbone qwen3-1.7b --lr 0.0005  --val_size .1 --val_split prefix --patience 10 --freeze_layers 1 -1 --categorical_features activity resource --continuous_features accumulated_time  --lifecycle --wandb  --append_run_info
+ --project_name BPI20_003 --dataset BPI20RequestForPayment --backbone qwen3-4b --lr 0.0005  --val_size .1 --val_split prefix --patience 10 --freeze_layers 1 -1 --categorical_features activity resource --continuous_features accumulated_time  --lifecycle --wandb  --append_run_info

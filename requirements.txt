@@ -1,0 +1,19 @@
+skpm @ git+https://github.com/raseidi/skpm.git
+
+peft==0.14.0
+transformers>=4.51.0,<5
+huggingface_hub>=0.23.0
+
+accelerate==1.10.1
+datasets==4.0.0
+wandb==0.19.8
+pydantic==2.11.5
+torchmetrics==1.7.4
+python-dotenv==1.1.1
+tqdm==4.66.4
+seaborn==0.13.2
+
+# Fast HF downloader (required if HF_HUB_ENABLE_HF_TRANSFER=1)
+hf_transfer>=0.1.8
+#torchao>=0.15.0
+

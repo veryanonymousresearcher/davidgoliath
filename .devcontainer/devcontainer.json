@@ -1,0 +1,57 @@
+{
+  "name": "LLM Trainer (CUDA + bnb)",
+  "build": {
+    "dockerfile": "../Dockerfile.spark",
+    "context": ".."
+  },
+
+  "runArgs": ["--gpus=all", "--ipc=host", "--shm-size=16g"],
+
+    "customizations": {
+    "vscode": {
+        "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance", // to get language server (typescripting)
+        "openai.chatgpt"  //to get Codex support in the editor
+        ]
+    }
+    },
+// CODEGPT SETTINGS: END
+
+  // Persist downloads/caches across rebuilds
+  "mounts": [
+    "source=${localWorkspaceFolder}/.hf-cache,target=/hf-cache,type=bind,consistency=cached",
+    "source=skpm-data,target=/root/skpm,type=volume",
+    // Mount OpenAI Codex auth token from SSH host into container
+    "source=${localEnv:HOME}/.codex,target=/root/.codex,type=bind,consistency=cached"
+  ],
+
+  "containerEnv": {
+    "BITSANDBYTES_NOWELCOME": "1",
+    "HF_HOME": "/hf-cache",
+    "HF_HUB_CACHE": "/hf-cache/hub",
+    "HF_HUB_DISABLE_XET": "1",
+    "HF_HUB_ENABLE_HF_TRANSFER": "1",
+    "HF_HUB_DOWNLOAD_TIMEOUT": "600",
+    "HF_HUB_ETAG_TIMEOUT": "300",
+    "HF_HUB_MAX_RETRIES": "20",
+    "WANDB_API_KEY": "${localEnv:WANDB_API_KEY}"
+  },
+    
+  // mount the workspace folder to /app in the container
+  "workspaceFolder": "/app",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/app,type=bind,consistency=cached",
+
+  //"postCreateCommand": "python -m pip install --upgrade pip && pip install -r requirements.txt && python -m pip install ipykernel && python - <<'PY'\nimport torch\nprint('torch.cuda.is_available:', torch.cuda.is_available())\nPY",
+
+  "postCreateCommand": "python -m pip install --upgrade pip && pip install -r requirements.txt && pip uninstall -y torchao || true && python -c \"import importlib.util as u; assert u.find_spec('torchao') is None, 'torchao still present'\" && python -m pip install ipykernel && python - <<'PY'\nimport torch\nprint('torch.cuda.is_available:', torch.cuda.is_available())\nPY",
+
+
+  "postStartCommand": "mkdir -p /root/skpm/event_logs", // required to run skpm
+
+  "remoteEnv": {
+    "PYTHONUNBUFFERED": "1"
+    
+  }
+  
+}

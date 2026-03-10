@@ -1,0 +1,35 @@
+# CUDA 12.1 matches bnb 0.45.2 GPU wheels
+# this is AMD image (for Intel/AMD CPUs)
+# FROM pytorch/pytorch:2.3.1-cuda12.1-cudnn8-runtime
+
+# This is ARM NVIDIA image for Nvidia and Apple CPUS (for NVIDIA GPUs)
+FROM nvcr.io/nvidia/pytorch:25.10-py3 
+
+# Daniel has this one on the LRZ. Fails with torchmetrics
+#FROM nvcr.io/nvidia/pytorch:23.08-py3 
+
+# Install dependencies (git + graphviz)
+RUN apt-get update && apt-get install -y \
+    git \
+    graphviz \
+ && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+# we don't want copying the whole context for spark, only mounting later
+# COPY . /app   
+
+# Clone Karpathy's nanoGPT into /app/nanoGPT
+RUN git clone --depth=1 https://github.com/karpathy/nanoGPT.git /app/nanoGPT
+
+# Caches + quiet bnb banner
+ENV HF_HOME=/hf-cache \
+    HF_HUB_CACHE=/hf-cache/hub \
+    BITSANDBYTES_NOWELCOME=1 \
+    PIP_NO_CACHE_DIR=1 \
+    PYTHONPATH="/app/nanoGPT:${PYTHONPATH}"
+
+
+# to get the git command to execute skpm @ git+https://github.com/raseidi/skpm.git
+#RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
+
+CMD ["bash"]
