@@ -99,7 +99,7 @@ class ContinuousTraces(Dataset):
         else:
             raise ValueError("Invalid device. Use 'cuda' or 'cpu'.")
 
-# Anonymous Author: not used? Cannot find references to this class
+# Hans: not used? Cannot find references to this class
 class PrefixNEP(Dataset):
     def __init__(
         self,

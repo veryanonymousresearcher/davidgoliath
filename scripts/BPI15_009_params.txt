@@ -1,0 +1,27 @@
+# unfreeze 1 -1
+ --project_name BPI15_009 --dataset BPI15 --backbone gpt2-small --lr 0.005  --val_size .1 --val_split prefix --patience 10 --freeze_layers 1 -1 --categorical_features activity resource --continuous_features accumulated_time amount --lifecycle --wandb  --append_run_info
+ --project_name BPI15_009 --dataset BPI15 --backbone gpt2-small --lr 0.005  --val_size .1 --val_split prefix --patience 10 --freeze_layers 1 -1 --categorical_features activity resource --continuous_features accumulated_time amount --lifecycle --wandb  --append_run_info
+ --project_name BPI15_009 --dataset BPI15 --backbone gpt2-small --lr 0.005  --val_size .1 --val_split prefix --patience 10 --freeze_layers 1 -1 --categorical_features activity resource --continuous_features accumulated_time amount --lifecycle --wandb  --append_run_info
+ --project_name BPI15_009 --dataset BPI15 --backbone gpt2-small --lr 0.005  --val_size .1 --val_split prefix --patience 10 --freeze_layers 1 -1 --categorical_features activity resource --continuous_features accumulated_time amount --lifecycle --wandb  --append_run_info
+ --project_name BPI15_009 --dataset BPI15 --backbone gpt2-small --lr 0.005  --val_size .1 --val_split prefix --patience 10 --freeze_layers 1 -1 --categorical_features activity resource --continuous_features accumulated_time amount --lifecycle --wandb  --append_run_info
+
+# unfreeze 1
+ --project_name BPI15_009 --dataset BPI15 --backbone gpt2-small --lr 0.005  --val_size .1 --val_split prefix --patience 10 --freeze_layers 1 --categorical_features activity resource --continuous_features accumulated_time amount --lifecycle --wandb  --append_run_info
+ --project_name BPI15_009 --dataset BPI15 --backbone gpt2-small --lr 0.005  --val_size .1 --val_split prefix --patience 10 --freeze_layers 1 --categorical_features activity resource --continuous_features accumulated_time amount --lifecycle --wandb  --append_run_info
+ --project_name BPI15_009 --dataset BPI15 --backbone gpt2-small --lr 0.005  --val_size .1 --val_split prefix --patience 10 --freeze_layers 1 --categorical_features activity resource --continuous_features accumulated_time amount --lifecycle --wandb  --append_run_info
+ --project_name BPI15_009 --dataset BPI15 --backbone gpt2-small --lr 0.005  --val_size .1 --val_split prefix --patience 10 --freeze_layers 1 --categorical_features activity resource --continuous_features accumulated_time amount --lifecycle --wandb  --append_run_info
+ --project_name BPI15_009 --dataset BPI15 --backbone gpt2-small --lr 0.005  --val_size .1 --val_split prefix --patience 10 --freeze_layers 1 --categorical_features activity resource --continuous_features accumulated_time amount --lifecycle --wandb  --append_run_info
+
+# unfreeze -1
+ --project_name BPI15_009 --dataset BPI15 --backbone gpt2-small --lr 0.005  --val_size .1 --val_split prefix --patience 10 --freeze_layers -1 --categorical_features activity resource --continuous_features accumulated_time amount --lifecycle --wandb  --append_run_info
+ --project_name BPI15_009 --dataset BPI15 --backbone gpt2-small --lr 0.005  --val_size .1 --val_split prefix --patience 10 --freeze_layers -1 --categorical_features activity resource --continuous_features accumulated_time amount --lifecycle --wandb  --append_run_info
+ --project_name BPI15_009 --dataset BPI15 --backbone gpt2-small --lr 0.005  --val_size .1 --val_split prefix --patience 10 --freeze_layers -1 --categorical_features activity resource --continuous_features accumulated_time amount --lifecycle --wandb  --append_run_info
+ --project_name BPI15_009 --dataset BPI15 --backbone gpt2-small --lr 0.005  --val_size .1 --val_split prefix --patience 10 --freeze_layers -1 --categorical_features activity resource --continuous_features accumulated_time amount --lifecycle --wandb  --append_run_info
+ --project_name BPI15_009 --dataset BPI15 --backbone gpt2-small --lr 0.005  --val_size .1 --val_split prefix --patience 10 --freeze_layers -1 --categorical_features activity resource --continuous_features accumulated_time amount --lifecycle --wandb  --append_run_info
+
+# unfreeze none
+ --project_name BPI15_009 --dataset BPI15 --backbone gpt2-small --lr 0.005  --val_size .1 --val_split prefix --patience 10  --categorical_features activity resource --continuous_features accumulated_time amount --lifecycle --wandb  --append_run_info
+ --project_name BPI15_009 --dataset BPI15 --backbone gpt2-small --lr 0.005  --val_size .1 --val_split prefix --patience 10  --categorical_features activity resource --continuous_features accumulated_time amount --lifecycle --wandb  --append_run_info
+ --project_name BPI15_009 --dataset BPI15 --backbone gpt2-small --lr 0.005  --val_size .1 --val_split prefix --patience 10  --categorical_features activity resource --continuous_features accumulated_time amount --lifecycle --wandb  --append_run_info
+ --project_name BPI15_009 --dataset BPI15 --backbone gpt2-small --lr 0.005  --val_size .1 --val_split prefix --patience 10  --categorical_features activity resource --continuous_features accumulated_time amount --lifecycle --wandb  --append_run_info
+ --project_name BPI15_009 --dataset BPI15 --backbone gpt2-small --lr 0.005  --val_size .1 --val_split prefix --patience 10  --categorical_features activity resource --continuous_features accumulated_time amount --lifecycle --wandb  --append_run_info

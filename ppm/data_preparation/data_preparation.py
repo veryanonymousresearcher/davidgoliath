@@ -380,7 +380,7 @@ def charge_loaders(training_config: dict):
     train_loader = DataLoader(
         train_dataset,
         batch_size=training_config["batch_size"],
-        shuffle=True,    #Anonymous Author set to True, was False
+        shuffle=True,    #Hans set to True, was False
         collate_fn=continuous,
         num_workers=num_workers,
         persistent_workers=num_workers > 0,

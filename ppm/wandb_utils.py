@@ -255,3 +255,46 @@ def load_multiple_experiments(
         print(f"Datasets: {combined_runs['log'].unique().tolist()}")
 
     return combined_runs, combined_history
+
+
+
+def recover_best_val_metrics(
+    runs_df: pd.DataFrame,
+    history_df: pd.DataFrame,
+    loss_col: str = "val/loss",
+    acc_col: str = "val/accuracy",
+    f1_col: str = "val/f1",
+) -> pd.DataFrame:
+    """
+    For each run, find the step with the lowest val loss and return
+    the accuracy and F1 at that step — recovering early-stopping metrics.
+    """
+    required = {loss_col, acc_col, f1_col}
+    available = set(history_df.columns)
+    missing = required - available
+    if missing:
+        raise ValueError(
+            f"Columns not found in history: {missing}. "
+            f"Available columns: {sorted(available)}"
+        )
+
+    # Drop rows where the loss is missing (steps that didn't log val metrics)
+    val_history = history_df.dropna(subset=[loss_col])
+
+    # For each run, find the step index with the minimum val loss
+    best_idx = val_history.groupby("run_id")[loss_col].idxmin()
+    best_rows = val_history.loc[best_idx, ["run_id", "step", loss_col, acc_col, f1_col]]
+    best_rows = best_rows.rename(columns={
+        "step": "best_step",
+        loss_col: "best_val_loss",
+        acc_col: "best_val_acc",
+        f1_col: "best_val_f1",
+    })
+
+    # Merge back into runs_df
+    enriched = runs_df.merge(best_rows, left_on="id", right_on="run_id", how="left")
+    enriched = enriched.drop(columns=["run_id"])
+
+    n_recovered = best_rows["best_val_acc"].notna().sum()
+    print(f"Recovered best-step metrics for {n_recovered}/{len(runs_df)} runs")
+    return enriched

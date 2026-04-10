@@ -51,7 +51,7 @@ class CausalSelfAttention(nn.Module):
                                         .view(1, 1, config.block_size, config.block_size))
 
     '''
-    # Anonymous Author: gets replaced to accept attention mask. HuggingFace models can do this automatically
+    # Hans: gets replaced to accept attention mask. HuggingFace models can do this automatically
     # with modifications, but nanoGPT cannot
     def forward(self, x):
         B, T, C = x.size() # batch size, sequence length, embedding dimensionality (n_embd)
@@ -153,7 +153,7 @@ class Block(nn.Module):
         self.mlp = MLP(config)
 
     '''
-    # Anonymous Author: gets replaced to accept attention mask. HuggingFace models can do this automatically
+    # Hans: gets replaced to accept attention mask. HuggingFace models can do this automatically
     # with modifications, but nanoGPT cannot
     def forward(self, x):
         x = x + self.attn(self.ln_1(x))
@@ -439,7 +439,7 @@ class GPT(nn.Module):
 
         return idx
     
-# added Anonymous Author: Wrap the nanoGPT student into a HuggingFace-style adapter 
+# added Hans: Wrap the nanoGPT student into a HuggingFace-style adapter 
 from types import SimpleNamespace
 
 class NanoGPTBackbone(nn.Module):

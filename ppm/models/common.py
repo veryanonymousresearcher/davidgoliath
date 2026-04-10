@@ -132,7 +132,7 @@ class OutLayer(nn.Module):
 
 class PositionalEncoding(nn.Module):
     '''
-    Anonymous Author: additional positional encoding for transformer, as used in the original transformer paper.
+    Hans: additional positional encoding for transformer, as used in the original transformer paper.
     Llama and Qwen do not use positional encoding, but this could be used to augment the embeddings nonetheless.
     Current implementation is just the positions for testing purposes, idea is to use timestamps later.
     '''

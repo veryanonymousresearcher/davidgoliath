@@ -1,22 +1,102 @@
-# Fine-Tuning LLMs for Multi-Task Predictive Process Monitoring
+# David vs. Goliath in Next Activity Prediction: Argmax vs. LSTM, Transformer, and LLM
 
 *Paper under review.*
 
-## Overview
 
-* This repo has code and scripts to fine-tune large language models (LLMs) for multi-task PPM.
-* We use [uv](https://docs.astral.sh/uv/guides/install-python/) to manage our local environment.
-* Tested only on Ubuntu 24.04 using Python 3.12.
+## Environment and Setup
 
-## Requirements
+This project requires a CUDA-enabled PyTorch environment for training and evaluation. To ensure reproducibility, a preconfigured containerized environment is provided. A minimal manual setup is also described for reference.
 
-Install all dependencies with:
+---
+
+## Recommended Setup (Containerized Environment)
+
+The repository includes a fully specified container configuration that reproduces the development and training environment.
+
+### Requirements
+
+- Docker  
+- NVIDIA GPU with compatible drivers  
+- NVIDIA Container Toolkit  
+
+### Setup Procedure
+
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd <repository-name>
+```
+
+2. Open the repository in an editor or workflow that supports container-based development environments.
+
+3. Reopen the project inside the container when prompted.
+
+During initialization, the environment will automatically:
+
+- install Python dependencies from `requirements.txt`  
+- configure the Python environment  
+- verify CUDA availability in PyTorch  
+
+The project workspace is mounted at:
 
 ```bash
-uv venv .venvv -python 3.12
-source .venv/bin/activate
-uv pip install -r requirements.txt
+/app
 ```
+
+### Persistent Data and Caching
+
+To avoid repeated downloads and preserve intermediate data:
+
+- Hugging Face cache is stored in `./.hf-cache`  
+- runtime data is stored in a persistent Docker volume   
+
+---
+
+## Manual Setup (Alternative)
+
+A manual installation is possible but requires careful alignment of CUDA, PyTorch, and system dependencies.
+
+### Requirements
+
+- Python 3.x  
+- NVIDIA GPU with CUDA support (recommended)  
+- PyTorch compatible with the installed CUDA version  
+
+### Setup Procedure
+
+```bash
+git clone <repository-url>
+cd <repository-name>
+
+python -m venv .venv
+source .venv/bin/activate
+pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+Create a `.env` file in the project root:
+
+```env
+HF_TOKEN="your huggingface token"
+WANDB_API_KEY="your wandb api key"
+```
+
+In addition, the project depends on the `nanoGPT` repository, which should be available on the Python path:
+
+```bash
+git clone https://github.com/karpathy/nanoGPT.git
+export PYTHONPATH="$(pwd)/nanoGPT:${PYTHONPATH}"
+```
+
+## Reproducibility
+
+The container configuration provided in this repository defines the reference environment used for all experiments. It specifies:
+
+- base system (CUDA, PyTorch)  
+- Python dependencies  
+- runtime configuration  
+
+Using this setup is recommended to reproduce results with minimal variation. The manual setup is provided for transparency and flexibility but may require additional adjustments depending on the system.
 
 ## Scripts and Structure
 
@@ -25,86 +105,110 @@ uv pip install -r requirements.txt
 ├── data/                           # Event logs (automatically downloaded)
 ├── scripts/                        # Experiment scripts and configs
 │   ├── *.sh                        
-│   ├── *.txt                       
-│   └── *.slurm                     
-├── notebooks/                      # Analysis notebooks
+│   ├── *.txt                                         
 ├── ppm/                            # Source code
-├── luijken_transfer_learning.py    # Competitor training script
-├── rebmann_et_al.py                # Narrative-style competitor training script
-├── next_event_prediction.py        # Main training script
+├── results/                        # Results hyperparameter search and experiments
+├── main_baseline.py                # Script to calculate baseline
+├── main_distill.py                 # Main training script for distillation
+├── main_nep.py                     # Main training script for finetuning LLMs and training Transformers and LSTMs from scratch
+├── main_prefixes.py                # Calculates prefix statistics (Table 2)
 ├── requirements.txt                # Python dependencies
 └── README.md                       # This file
 ```
 
-## Data
-
-We use five public event logs. They will be downloaded via [SkPM](https://skpm.readthedocs.io/en/latest/install/installation.html) under `data/<LOG>/`:
-
-* [BPI20PTC](https://doi.org/10.4121/uuid:5d2fe5e1-f91f-4a3b-ad9b-9e4126870165) (Prepaid Travel Costs)
-* [BPI20RfP](https://doi.org/10.4121/uuid:895b26fb-6f25-46eb-9e48-0dca26fcd030) (Request for Payment)
-* [BPI20TPD](https://doi.org/10.4121/uuid:ea03d361-a7cd-4f5e-83d8-5fbdf0362550) (Permit Data)
-* [BPI12](https://doi.org/10.4121/uuid:3926db30-f712-4394-aebc-75976070e91f)
-* [BPI17](https://doi.org/10.4121/uuid:c2c3b154-ab26-4b31-a0e8-8f2350ddac11)
 
 ## Usage
 
 ### Single experiments
 
-**RNN baseline**
+**Baseline**
 
 ```bash
-python next_event_prediction.py \
+python main_baseline.py \
   --dataset BPI20PrepaidTravelCosts \
-  --backbone rnn \
-  --embedding_size 32 \
-  --hidden_size 128 \
-  --lr 0.0005 \
-  --batch_size 64 \
-  --epochs 25 \
-  --categorical_features activity \
-  --continuous_features all \
-  --categorical_targets activity \
-  --continuous_targets remaining_time
+  --lifecycle\
+  --wandb
 ```
 
 **LLM fine-tuning**
 
-In order to use LLMs, you need a [HuggingFace token](https://huggingface.co/docs/hub/en/security-tokens). A few options on how to use it:
-
-* Create an `.env` file in the root of this repository and write your token like `HF_TOKEN=<YOUR_TOKEN>`
-* Export a local variable `export HF_TOKEN="<YOUR_TOKEN>"`
-* Hard code it [here](https://github.com/raseidi/llm-peft-ppm/blob/ceb46b533d2d3154315ef008e4c6df9ddc988e14/ppm/models/models.py#L13)
-
-For local debugging purposes, try the tiny setup below with a small `r` value for `BPI20PrepaidTravelCosts` and `qwen25-05b`. If it doesn't fit your GPU memory, keep decreasing the `batch_size` (=4 uses less than 2gb). 
-
 ```bash
-python next_event_prediction.py \
-  --dataset BPI20PrepaidTravelCosts \
-  --backbone qwen25-05b \
-  --embedding_size 896 \
-  --hidden_size 896 \
-  --lr 0.00005 \
-  --batch_size 64 \
-  --epochs 1 \
-  --categorical_features activity \
-  --continuous_features all \
-  --categorical_targets activity \
-  --continuous_targets remaining_time \
-  --fine_tuning lora \
-  --r 2 \
-  --lora_alpha 4
+python main_nep.py \
+  --project_name BPI20_003 \
+  --dataset BPI20TravelPermitData  \
+  --backbone qwen3-0.6b \
+  --lr 0.0005  \
+  --val_size .1 \
+  --val_split prefix \
+  --patience 10 \
+  --freeze_layers 1 -1 \
+  --categorical_features activity resource \
+  --continuous_features accumulated_time  \
+  --lifecycle \
+  --wandb \
+  --compile \
+  --append_run_info
 ```
 
-Alternatively, use the argument `--wandb` to enable wandb.
+**Training from scratch**
+
+```bash
+python main_nep.py \
+  --project_name BPI12_002 \
+  --dataset BPI12 \
+  --backbone nanogpt \
+  --fine_tuning none \
+  --n_layers 4 \
+  --n_heads 8 \
+  --hidden_size 512 \
+  --lr 0.005 \
+  --val_size .1 \
+  --val_split prefix \
+  --patience 10 \
+  --freeze_layers 1 -1 \
+  --categorical_features activity resource \
+  --continuous_features accumulated_time amount \
+  --lifecycle \
+  --wandb \
+  --compile \
+  --append_run_info
+```
+
+**Training from scratch**
+```bash
+python main_distill.py \
+  --project_name Distill_BPI17_001 \ 
+  --dataset BPI17 \
+  --t_path /app/persisted_models/best/ \
+  --t_model_name BPI17_qwen3-1.7b_run_f3a4184u.pth \
+  --hidden_size 768 \
+  --n_layers 12 \
+  --n_heads 12 \
+  --lr 0.005  \
+  --val_size .1 \
+  --val_split prefix \
+  --patience 10 \
+  --categorical_features activity resource \
+  --continuous_features accumulated_time amount  \
+  --lifecycle \
+  --wandb \
+  --strategy sum
+```
+
+
+Use the argument `--wandb` to enable wandb.
 
 ### Hyperparameter search
 
-We used Slurm on our HPC clusters. Check `scripts/*.sh`, `scripts/*.txt`, and `scripts/*.slurm` to see how to reproduce our jobs or run other configurations locally.
+We used Slurm on our HPC clusters. Check `scripts/*.params.txt` to see how to reproduce our jobs or run other configurations locally.
 
-## Results
-
-All metrics and analysis notebooks are in the `notebooks/` folder. Check [this notebook](notebooks/results.ipynb) for plots that have not fit in the paper.
+### Results
+The results of our hyperparameter search and experiments can be found under `results/`.
 
 ## Contact
 
-For questions or feedback, reach me at [rafael.oyamada@kuleuven.be](mailto:rafael.oyamada@kuleuven.be) or open an issue here.
+For questions or feedback, reach me at [xxx](mailto:xxx) or open an issue here.
+
+## Credits
+
+This code is based on Rafael Oyamada's: https://github.com/raseidi/llm-peft-ppm

@@ -23,7 +23,7 @@
     "source=${localWorkspaceFolder}/.hf-cache,target=/hf-cache,type=bind,consistency=cached",
     "source=skpm-data,target=/root/skpm,type=volume",
     // Mount OpenAI Codex auth token from SSH host into container
-    "source=${localEnv:HOME}/.codex,target=/root/.codex,type=bind,consistency=cached"
+    //"source=${localEnv:HOME}/.codex,target=/root/.codex,type=bind,consistency=cached"
   ],
 
   "containerEnv": {
